@@ -4,7 +4,7 @@ class Sorters():
     def __init__(self):
         pass
 
-    def insertionsort(self, input_list):
+    def insertionsort(self, input_list): # O(n^2)
         for index in range(1, len(input_list)):
             cur_val = input_list[index]
             position = index
@@ -16,7 +16,7 @@ class Sorters():
             # Position is the correct index for cur_val in the sub_list 0 uptil size index -> this sublist is sorted
             input_list[position] = cur_val
 
-    def bubblesort(self, input_list):
+    def bubblesort(self, input_list): # O(n^2)
         for sublist_size in range(len(input_list)-1, 0, -1):
             # Unsorted sublist is of size sublist_size
             # Idea is to keep swapping right such that Largest number is put at last index in first pass, etc.
@@ -27,7 +27,7 @@ class Sorters():
                     input_list[i+1] = input_list[i]
                     input_list[i] = tmp
 
-    def selectionsort(self, input_list):
+    def selectionsort(self, input_list): # O(n^2)
         for slot_to_fill in range(len(input_list)-1, 0, -1):
             # Unsorted sublist is of size slot_to_fill
             # Idea is to find the largest number in sublist and then swap once to correct position (last, 2nd last, etc)
