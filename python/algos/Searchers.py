@@ -27,7 +27,7 @@ class Searchers():
 if __name__ == '__main__':
     input_list = [54,26,93,17,77,31,44,55,20]
     sorter = Sorters()
-    sorter.selectionsort(input_list)
+    sorter.selectionSort(input_list)
     searcher = Searchers()
     print "24 in list: " + str(searcher.binarySearch(input_list, 24))
     print "55 in list: " + str(searcher.binarySearch(input_list, 55))
