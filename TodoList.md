@@ -1,6 +1,6 @@
 Generators:
 - [ ] Random:
-  - [ ] MAC Addresses
+  - [X] MAC Addresses
   - [ ] IP Addresses
   - [ ] Word
   - [ ] Character String
