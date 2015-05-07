@@ -32,11 +32,11 @@ class Generators():
         else:
             return random.randint(0,100)
 
-    def listRandomNumbers(self, list_length, type=None, num_range=None, dec_places=None):
+    def listRandomNumbers(self, list_length, num_type=None, num_range=None, dec_places=None):
         ret_list = list()
         if isinstance(list_length, int):
             for x in range(list_length):
-                ret_list.append(self.randomNumber(type, num_range, dec_places))
+                ret_list.append(self.randomNumber(num_type, num_range, dec_places))
         return ret_list
 
     def randomMacAddress(self, OUI=None):

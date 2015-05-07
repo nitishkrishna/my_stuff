@@ -1,22 +1,25 @@
 __author__ = 'nitish'
+import sys
+from python.tools.Generators import Generators
+
 
 class Sorters():
     def __init__(self):
         pass
 
-    def insertionSort(self, input_list): # O(n^2)
+    def insertionSort(self, input_list):  # O(n^2)
         for index in range(1, len(input_list)):
             cur_val = input_list[index]
             position = index
             # Find the correct place to put cur_val in the unsorted list
             # Insertion sort takes elements one by one and "inserts" them in the correct index
-            while position>0 and input_list[position -1]>cur_val:
+            while position > 0 and input_list[position-1] > cur_val:
                 input_list[position] = input_list[position-1]
-                position = position-1
+                position -= 1
             # Position is the correct index for cur_val in the sub_list 0 uptil size index -> this sublist is sorted
             input_list[position] = cur_val
 
-    def bubbleSort(self, input_list): # O(n^2)
+    def bubbleSort(self, input_list):  # O(n^2)
         for sublist_size in range(len(input_list)-1, 0, -1):
             # Unsorted sublist is of size sublist_size
             # Idea is to keep swapping right such that Largest number is put at last index in first pass, etc.
@@ -27,7 +30,7 @@ class Sorters():
                     input_list[i+1] = input_list[i]
                     input_list[i] = tmp
 
-    def selectionSort(self, input_list): # O(n^2)
+    def selectionSort(self, input_list):  # O(n^2)
         for slot_to_fill in range(len(input_list)-1, 0, -1):
             # Unsorted sublist is of size slot_to_fill
             # Idea is to find the largest number in sublist and then swap once to correct position (last, 2nd last, etc)
@@ -41,9 +44,9 @@ class Sorters():
             input_list[slot_to_fill] = input_list[pos_of_largest]
             input_list[pos_of_largest] = tmp
 
-    def quickSort(self, input_list): # O(nlogn)
+    def quickSort(self, input_list):  # O(nlogn)
         # Call to resursive funtion passing full list
-        self.quickSortSplitter(input_list, 0, len(input_list) -1)
+        self.quickSortSplitter(input_list, 0, len(input_list) - 1)
 
     def quickSortSplitter(self, input_list, first, last):
 
@@ -51,8 +54,8 @@ class Sorters():
             # Find Pivot point
             pivot = self.partition(input_list, first, last)
             # Sort the sublists recursively
-            self.quickSortSplitter(input_list, first, pivot-1)
-            self.quickSortSplitter(input_list, pivot +1, last)
+            self.quickSortSplitter(input_list, first, pivot - 1)
+            self.quickSortSplitter(input_list, pivot + 1, last)
 
     def partition(self, input_list, first, last):
         pivotvalue = input_list[first]
@@ -66,11 +69,11 @@ class Sorters():
 
             while leftmark <= rightmark and \
                     input_list[leftmark] <= pivotvalue:
-                leftmark = leftmark + 1
+                leftmark += 1
 
             while input_list[rightmark] >= pivotvalue and \
                     rightmark >= leftmark:
-                rightmark = rightmark -1
+                rightmark -= 1
 
             if rightmark < leftmark:
                 done = True
@@ -87,16 +90,21 @@ class Sorters():
 
 
 if __name__ == '__main__':
-    input_list = [54,26,93,17,77,31,44,55,20]
+    generator = Generators()
     sorter = Sorters()
-    sorter.insertionSort(input_list)
-    print "Insertion sorted list = " + str(input_list)
-    input_list_2 = [55,26,93,90,77,31,11,55,04]
-    sorter.bubbleSort(input_list_2)
-    print "Bubble sorted list = " + str(input_list_2)
-    input_list_3 = [54,33,93,17,77,31,22,55,20]
-    sorter.selectionSort(input_list_3)
-    print "Selection sorted list = " + str(input_list_3)
-    input_list_4 = [54,4,93,17,79,31,7,55,66]
-    sorter.selectionSort(input_list_4)
-    print "Quick sorted list = " + str(input_list_4)
+
+    rand_list = generator.listRandomNumbers(list_length=10, num_range=100, num_type="int")
+    sorter.insertionSort(rand_list)
+    print "Insertion sorted list = " + str(rand_list)
+
+    rand_list = generator.listRandomNumbers(list_length=7, num_range=100, num_type="int")
+    sorter.bubbleSort(rand_list)
+    print "Bubble sorted list = " + str(rand_list)
+
+    rand_list = generator.listRandomNumbers(list_length=14, num_range=100, num_type="int")
+    sorter.selectionSort(rand_list)
+    print "Selection sorted list = " + str(rand_list)
+
+    rand_list = generator.listRandomNumbers(list_length=11, num_range=100, num_type="int")
+    sorter.selectionSort(rand_list)
+    print "Quick sorted list = " + str(rand_list)
