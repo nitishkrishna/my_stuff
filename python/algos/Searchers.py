@@ -29,7 +29,7 @@ if __name__ == '__main__':
     sorter = Sorters()
     sorter.selectionSort(input_list)
     searcher = Searchers()
-    result = searcher.binarySearch(input_list, 24):
+    result = searcher.binarySearch(input_list, 24)
     if result:
         print "24 in list at index: " + str(result)
     result = searcher.binarySearch(input_list, 55)
