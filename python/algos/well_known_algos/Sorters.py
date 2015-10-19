@@ -1,5 +1,9 @@
 __author__ = 'nitish'
+import os
 import sys
+cur_dir = os.path.dirname(__file__)
+sys_path_dir = os.path.join(cur_dir, '../../../')
+sys.path.append(sys_path_dir)
 from python.tools.Generators import Generators
 
 
@@ -50,7 +54,7 @@ class Sorters():
 
     def quickSortSplitter(self, input_list, first, last):
 
-        if first<last: # Sublist is of size>1
+        if first < last:  # Sublist is of size>1
             # Find Pivot point
             pivot = self.partition(input_list, first, last)
             # Sort the sublists recursively
@@ -93,18 +97,18 @@ if __name__ == '__main__':
     generator = Generators()
     sorter = Sorters()
 
-    rand_list = generator.listRandomNumbers(list_length=10, num_range=100, num_type="int")
+    rand_list = generator.randomNumber(list_length=10, num_range=100, num_type="int")
     sorter.insertionSort(rand_list)
     print "Insertion sorted list = " + str(rand_list)
 
-    rand_list = generator.listRandomNumbers(list_length=7, num_range=100, num_type="int")
+    rand_list = generator.randomNumber(list_length=7, num_range=100, num_type="int")
     sorter.bubbleSort(rand_list)
     print "Bubble sorted list = " + str(rand_list)
 
-    rand_list = generator.listRandomNumbers(list_length=14, num_range=100, num_type="int")
+    rand_list = generator.randomNumber(list_length=14, num_range=100, num_type="int")
     sorter.selectionSort(rand_list)
     print "Selection sorted list = " + str(rand_list)
 
-    rand_list = generator.listRandomNumbers(list_length=11, num_range=100, num_type="int")
+    rand_list = generator.randomNumber(list_length=11, num_range=100, num_type="int")
     sorter.selectionSort(rand_list)
     print "Quick sorted list = " + str(rand_list)
