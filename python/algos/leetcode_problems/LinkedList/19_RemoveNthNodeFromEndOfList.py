@@ -18,7 +18,6 @@ __author__ = 'nitish'
 #         self.val = x
 #         self.next = None
 
-
 class Solution(object):
     def removeNthFromEnd(self, head, n):
         """
@@ -26,20 +25,23 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        save_head = head
-        cur_node = head
-        removal_candidate = head
-        node_before_removal_candidate = head
-        for x in range(n-1):
-            cur_node = cur_node.next
-        if cur_node.next == None:
-            new_head = head.next
-            return new_head
-        while cur_node.next != None:
-            node_before_removal_candidate = removal_candidate
-            removal_candidate = removal_candidate.next
-            cur_node = cur_node.next
-        node_before_removal_candidate.next=removal_candidate.next
+        fast = head
+        slow = head
+        if fast is None or fast.next is None:
+            return None
+
+        while n > 0:
+            n -= 1
+            fast = fast.next
+
+        if fast is None:
+            return head.next
+
+        while fast.next != None:
+            slow = slow.next
+            fast = fast.next
+
+        slow.next = slow.next.next
         return head
 
-#99.50 percentile
+#99.95 percentile
